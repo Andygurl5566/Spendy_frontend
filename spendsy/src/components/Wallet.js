@@ -1,7 +1,6 @@
-import {useEffect, useState} from 'react'
-import {Link} from 'react-router-dom'
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 function Wallet() {
-
   // States
   const [wallet, setWallet] = useState({})
   const [walletBills, setWalletBills] = useState([])
@@ -9,7 +8,7 @@ function Wallet() {
   // const [user, setUser] = useState([])
 
   // Fetches
-  useEffect( () =>{
+  useEffect(() => {
     fetch(`http://localhost:9292/wallet/bills/9`)
     .then(resp => resp.json())
     .then(data => setWalletBills(data))
@@ -37,28 +36,28 @@ function Wallet() {
   // }, [])
 
   // Table render functions
-function renderTableHeader() {
-  return (
-    <tr>
-      <th>Bill</th>
-      <th>Cost</th>
-      <th>Category</th>
-    </tr>
-  )
-}
-  
-function renderTableData() {
-  return walletBills.map(bill => {
-    const { id, bill_name, bill_amount, category_name} = bill
+  function renderTableHeader() {
     return (
-      <tr key={id}>
-        <td>{bill_name}</td>
-        <td>{bill_amount}</td>
-        <td>{category_name}</td>
+      <tr>
+        <th>Bill</th>
+        <th>Cost</th>
+        <th>Category</th>
       </tr>
-    )
-  })
-}
+    );
+  }
+
+  function renderTableData() {
+    return walletBills.map(bill => {
+      const { id, bill_name, bill_amount, category_name} = bill
+      return (
+        <tr key={id}>
+          <td>{bill_name}</td>
+          <td>{bill_amount}</td>
+          <td>{category_name}</td>
+        </tr>
+      )
+    })
+  }
 
 function renderTableFooter() {
   return (
@@ -69,9 +68,10 @@ function renderTableFooter() {
         <button class=" add-row-btn table-btn"><i class="fas fa-plus"></i></button>
         <button class=" edit-btn table-btn">Edit</button>
         </td>
-    </tr>
-  )
-}
+      </tr>
+    );
+  }
+
   return (
     <div className="wallet-container">
       <Link to="/wallet/new">
@@ -85,7 +85,7 @@ function renderTableFooter() {
         </tbody>
       </table>
     </div>
-  )
+  );
 }
 
-export default Wallet
+export default Wallet;

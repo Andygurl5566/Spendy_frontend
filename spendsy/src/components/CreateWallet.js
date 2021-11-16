@@ -38,7 +38,7 @@ function CreateWallet(){
       </form>
   
       <Routes>
-          <Route path = "/form" element = { <WalletForm />} />
+        <Route path="/form" element={<WalletForm />} />
       </Routes>
     </div>
   </>
@@ -46,4 +46,4 @@ function CreateWallet(){
   )
 }
 
-export default CreateWallet
+export default CreateWallet;
