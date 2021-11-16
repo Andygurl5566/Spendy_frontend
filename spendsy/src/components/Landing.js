@@ -15,13 +15,15 @@ function Landing(){
   return (
     
     <div>
-      <Navbar handleLogin={handleLogin}/>
+      <Navbar handleLogin={handleLogin} />
       <main className= "main-text">
         <p>Welcome to <span>Spendsy, </span>
           <br/>
           a financial tracking app to help you keep balance.</p>
         <div className='btn-container'>
+        <Link to='/wallet/page'>
           <button className='btn' onClick={() => handleLogin()}>Login</button>
+        </Link>
           <button className='btn'>Sign Up</button>
         </div>
       </main>

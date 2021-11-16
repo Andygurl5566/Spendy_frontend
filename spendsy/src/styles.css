@@ -89,12 +89,24 @@ main p span {
 
 /* Table Styling */
 
-/* temporary */
+.wallet-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.new-wallet-btn {
+  height: 5rem;
+  width: 22rem;
+  margin-top: 3rem;
+  background-color: #def3dc;
+  font-size: 2rem;}
 
 table {
-  margin-top: 5%;
+  margin: 5% auto;
   height: 20vh;
-  width: 700px;
+  width: 70%;
 }
 
 th {
@@ -114,10 +126,49 @@ th {
   background-color: #DEF3DC;
 }
 
+.bills tr:nth-child(odd) {
+  background-color: #dae0d9;
+}
+
+.bills tr:last-child{
+background-color: #3abf78;
+color: white;
+}
 .bills th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: center;
   background-color: #3abf78;
   color: white;
+}
+
+.table-footer span {
+  margin-left: 1rem;
+}
+.table-btn {
+  height: 2rem;
+  background-color: #535151;
+  float: right;
+  margin: 0.25rem 2rem;
+}
+
+.edit-btn {
+  height: 3rem;
+  width: 5rem;
+  font-size: 1.5rem;
+  color: white;
+  border: none; 
+}
+
+.add-row-btn {
+  height: 3rem;
+  width: 3rem;
+  font-size: 1.5rem;
+  color: white;
+  border: none;
+}
+
+button {
+  border: none;
+  cursor: pointer;
 }

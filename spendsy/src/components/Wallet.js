@@ -1,9 +1,12 @@
 import {useEffect, useState} from 'react'
+import {Link} from 'react-router-dom'
+function Wallet() {
 
-function Wallet({wallets:{bill_name, bill_amount, category_name}}) {
-
+  // States
   const [walletBills, setWalletBills] = useState([])
+  const [user, setUser] = useState([])
 
+  // Fetches
   useEffect( () =>{
     fetch(`http://localhost:9292/wallet/bills/9`)
     .then(resp => resp.json())
@@ -11,7 +14,13 @@ function Wallet({wallets:{bill_name, bill_amount, category_name}}) {
   }
   , [])
 
-  
+  useEffect( () => {
+    fetch(`http://localhost:9292/user/5`)
+    .then(resp => resp.json())
+    .then(data => setUser(data))
+  })
+
+  // Table render functions
 function renderTableHeader() {
   return (
     <tr>
@@ -35,12 +44,28 @@ function renderTableData() {
   })
 }
 
+function renderTableFooter() {
   return (
-    <div>
+    <tr className="table-footer">
+      <td><p>Remaining Funds:<span>$300</span></p></td>
+      <td></td>
+      <td>
+        <button class=" add-row-btn table-btn"><i class="fas fa-plus"></i></button>
+        <button class=" edit-btn table-btn">Edit</button>
+        </td>
+    </tr>
+  )
+}
+  return (
+    <div className="wallet-container">
+      <Link to="/wallet/new">
+        <button className="new-wallet-btn">Create a New Wallet</button>
+      </Link>
       <table className="bills">
         <tbody>
           {renderTableHeader()}
           {renderTableData()}
+          {renderTableFooter()}
         </tbody>
       </table>
     </div>

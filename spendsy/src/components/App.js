@@ -1,7 +1,13 @@
+// Imports
 import Landing from "./Landing";
 import Wallet from "./Wallet";
+import WalletPage from "./WalletPage"
+import LoginPage from "./LoginPage"
+import CreateWallet from "./CreateWallet";
+// Hooks
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes ,Route,Link } from 'react-router-dom'
+
 
 function App() {
   const [wallets, setWallets] = useState({});
@@ -12,17 +18,19 @@ function App() {
       .then((data) => setWallets(data));
   }, []);
 
-  // console.log(wallets);
-
   return (
     <BrowserRouter>
     <div className="App">
       <Routes>
-          <Route  path = "/" element ={ <Landing/> } />    
+      <Route  path = "/" element ={ <Landing/> } />    
           <Route path = "/wallet" element ={ <Wallet wallets={wallets} /> } />
-        </Routes>
-      </div>
-    </BrowserRouter>
+          <Route path = "/login" element ={ <LoginPage /> } />
+          <Route path = "/wallet" element ={ <Wallet /> } />
+          <Route path = "/wallet/page" element ={<WalletPage/>} />
+          <Route path = "/wallet/new" element ={<CreateWallet />} />
+      </Routes>
+    </div>
+  </BrowserRouter>
   );
 }
 

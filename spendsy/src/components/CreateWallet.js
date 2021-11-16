@@ -1,8 +1,17 @@
+import NavBar from "./Navbar"
 import WalletForm from "./WalletForm"
+import {Routes, Route} from 'react-router-dom'
 
-export function CreateWallet(){
+function CreateWallet(){
   return (
     <div>
+      <NavBar />
+
+
+
+
+
+
       <Routes>
           <Route path = "/form" element = { <WalletForm />} />
       </Routes>
@@ -10,3 +19,4 @@ export function CreateWallet(){
   )
 }
 
+export default CreateWallet
