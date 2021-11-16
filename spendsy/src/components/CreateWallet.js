@@ -3,7 +3,9 @@ import WalletForm from "./WalletForm"
 export function CreateWallet(){
   return (
     <div>
-      <WalletForm />
+      <Routes>
+          <Route path = "/form" element = { <WalletForm />} />
+      </Routes>
     </div>
   )
 }

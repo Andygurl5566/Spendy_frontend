@@ -1,4 +1,5 @@
 import Navbar from './Navbar'
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function Landing(){
 
@@ -36,6 +37,7 @@ function Landing(){
         <h2>Yeison, Aidan, Andrea</h2>
       </footer>
     </div>
+  
   )
 }
 
