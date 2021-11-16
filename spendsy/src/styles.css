@@ -172,3 +172,9 @@ button {
   border: none;
   cursor: pointer;
 }
+
+/* Create Wallet Form */
+
+.create-wallet-form {
+  margin: auto;
+}

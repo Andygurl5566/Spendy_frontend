@@ -3,8 +3,10 @@ import {Link} from 'react-router-dom'
 function Wallet() {
 
   // States
+  const [wallet, setWallet] = useState({})
   const [walletBills, setWalletBills] = useState([])
-  const [user, setUser] = useState([])
+  const [total, setTotal] = useState(0)
+  // const [user, setUser] = useState([])
 
   // Fetches
   useEffect( () =>{
@@ -13,12 +15,26 @@ function Wallet() {
     .then(data => setWalletBills(data))
   }
   , [])
-
-  useEffect( () => {
-    fetch(`http://localhost:9292/user/5`)
+  
+  useEffect( () =>{
+    fetch(`http://localhost:9292/wallet/9`)
     .then(resp => resp.json())
-    .then(data => setUser(data))
-  })
+    .then(data => setWallet(data))
+  }
+  , [])
+  
+  useEffect( () =>{
+    fetch(`http://localhost:9292/wallet/total/9`)
+    .then(resp => resp.json())
+    .then(data => setTotal(data))
+  }
+  , [])
+
+  // useEffect( () => {
+  //   fetch(`http://localhost:9292/user/5`)
+  //   .then(resp => resp.json())
+  //   .then(data => setUser(data))
+  // }, [])
 
   // Table render functions
 function renderTableHeader() {
@@ -47,7 +63,7 @@ function renderTableData() {
 function renderTableFooter() {
   return (
     <tr className="table-footer">
-      <td><p>Remaining Funds:<span>$300</span></p></td>
+      <td><p>Remaining Funds:<span>{(wallet.amount * 100) - total}</span></p></td>
       <td></td>
       <td>
         <button class=" add-row-btn table-btn"><i class="fas fa-plus"></i></button>
