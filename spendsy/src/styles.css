@@ -178,3 +178,25 @@ button {
 .create-wallet-form {
   margin: auto;
 }
+
+/* Bill Entry Form */
+
+label {
+  font-size: 1.25rem;
+}
+.bill-entry {
+display: flex;
+flex-direction: column;
+width: 45%;
+margin-top: 5%;
+align-items: center;
+}
+
+.bill-input-field{
+  width: 50%;
+  height: 3rem;
+  border-radius: 30px;
+  border: none;
+  background-color: #E5E5E5;
+  text-align: center;
+}
