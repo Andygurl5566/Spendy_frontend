@@ -160,6 +160,14 @@ color: white;
   border: none; 
 }
 
+.delete-btn {
+  height: 3rem;
+  width: 6rem;
+  font-size: 1.5rem;
+  color: white;
+  border: none; 
+}
+
 .add-row-btn {
   height: 3rem;
   width: 3rem;

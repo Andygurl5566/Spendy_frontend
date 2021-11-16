@@ -67,6 +67,10 @@ function renderTableFooter() {
       <td>
         <button class=" add-row-btn table-btn"><i class="fas fa-plus"></i></button>
         <button class=" edit-btn table-btn">Edit</button>
+
+        {/* Andrea - working on this */}
+        <button class = "delete-btn table-btn">Delete</button>
+
         </td>
       </tr>
     );
