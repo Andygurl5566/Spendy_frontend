@@ -11,23 +11,36 @@ function Wallet({wallets:{bill_name, bill_amount, category_name}}) {
   }
   , [])
 
+  
+function renderTableHeader() {
+  return (
+    <tr>
+      <th>Bill</th>
+      <th>Cost</th>
+      <th>Category</th>
+    </tr>
+  )
+}
+  
+function renderTableData() {
+  return walletBills.map(bill => {
+    const { id, bill_name, bill_amount, category_name} = bill
+    return (
+      <tr key={id}>
+        <td>{bill_name}</td>
+        <td>{bill_amount}</td>
+        <td>{category_name}</td>
+      </tr>
+    )
+  })
+}
 
   return (
     <div>
-      <table>
+      <table className="bills">
         <tbody>
-        <tr>
-          <th>Bill</th>
-          <th>Cost</th>
-          <th>Category</th>
-        </tr>
-        {walletBills.map(bill => {
-          <tr>
-            <td>{bill.bill_name}</td>
-            <td>{bill.bill_amount}</td>
-            <td>{bill.category_name}</td>
-          </tr>
-        })}
+          {renderTableHeader()}
+          {renderTableData()}
         </tbody>
       </table>
     </div>

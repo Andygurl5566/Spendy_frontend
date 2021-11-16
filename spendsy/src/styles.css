@@ -99,5 +99,25 @@ table {
 
 th {
   margin: 2rem;
+}
 
+.bills td{
+  text-align: center;
+}
+
+.bills td, .bills th {
+  border: 1px solid #DEF3DC;
+  padding: 0.5rem;
+}
+
+.bills tr:nth-child(even) {
+  background-color: #DEF3DC;
+}
+
+.bills th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #3abf78;
+  color: white;
 }
