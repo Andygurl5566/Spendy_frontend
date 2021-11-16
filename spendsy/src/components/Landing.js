@@ -1,18 +1,27 @@
 import Navbar from './Navbar'
+import {useState} from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function Landing(){
 
+  const [loggedIn, setLoggedIn] = useState(false)
+
+
+  const handleLogin = () => {
+    setLoggedIn(!loggedIn)
+    console.log(loggedIn)
+  }
+  
   return (
     
     <div>
-      <Navbar />
+      <Navbar handleLogin={handleLogin}/>
       <main className= "main-text">
         <p>Welcome to <span>Spendsy, </span>
           <br/>
           a financial tracking app to help you keep balance.</p>
         <div className='btn-container'>
-          <button className='btn'>Login</button>
+          <button className='btn' onClick={() => handleLogin()}>Login</button>
           <button className='btn'>Sign Up</button>
         </div>
       </main>
