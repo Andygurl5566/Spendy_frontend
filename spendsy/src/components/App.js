@@ -1,5 +1,4 @@
 import Landing from './Landing'
-import WalletPage from './WalletPage';
 
 
 function App() {
