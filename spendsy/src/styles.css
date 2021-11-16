@@ -87,3 +87,17 @@ main p span {
   height: 650px;
 }
 
+/* Table Styling */
+
+/* temporary */
+
+table {
+  margin-top: 5%;
+  height: 20vh;
+  width: 700px;
+}
+
+th {
+  margin: 2rem;
+
+}

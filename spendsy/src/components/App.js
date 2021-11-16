@@ -11,7 +11,7 @@ function App() {
       .then((data) => setWallets(data));
   }, []);
 
-  console.log(wallets);
+  // console.log(wallets);
 
   return (
     <div className="App">
