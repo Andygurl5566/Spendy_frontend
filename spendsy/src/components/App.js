@@ -14,7 +14,7 @@ function App() {
   const [wallet, setWallet] = useState({});
 
   useEffect( () =>{
-    fetch(`http://localhost:9292/wallet/12`)
+    fetch(`http://localhost:9292/wallet/1`)
     .then(resp => resp.json())
     .then(data => {
       setWallet(data)

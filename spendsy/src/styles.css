@@ -159,9 +159,9 @@ color: white;
 }
 
 .edit-btn {
-  height: 3rem;
-  width: 5rem;
-  font-size: 1.5rem;
+  height: 2rem;
+  width: 3rem;
+  font-size: 0.85rem;
   color: white;
   border: none; 
 }

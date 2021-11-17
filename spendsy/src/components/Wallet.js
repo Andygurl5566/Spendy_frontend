@@ -5,7 +5,7 @@ function Wallet() {
   const [wallet, setWallet] = useState({})
   const [walletBills, setWalletBills] = useState([])
   const [total, setTotal] = useState(0)
-  
+  const [edit, setEdit] = useState(false)
   // const [user, setUser] = useState([])
 
   // Fetches
@@ -72,7 +72,7 @@ function Wallet() {
         setWalletBills(newBills)
     }}
 // ---------------------------------------------------------------------
-
+ const handleEdit = () => setEdit(!edit)
 
 // Table render functions
   function renderTableHeader() {
@@ -81,6 +81,7 @@ function Wallet() {
         <th>Bill</th>
         <th>Cost</th>
         <th>Category</th>
+        <th>Actions</th>
       </tr>
     );
   }
@@ -90,30 +91,37 @@ function Wallet() {
       const { id, bill_name, bill_amount, category_name} = bill
       return (
         <tr key={id}>
-          <td>{bill_name}</td>
-          <td>{bill_amount}</td>
-          <td>{category_name}</td>
+          {edit ? <td><input type="text" name="bill_name"></input></td> : <td>{bill_name}</td>}
+          {edit ? <td><input type="number" name="bill_cost"></input></td> : <td>{bill_amount}</td>}
+          {edit ? <td><input type="text" name="category_name"></input></td> : <td>{category_name}</td>}
+          <td>
+            {edit ? 
+            <>
+              <button className="edit-btn table-btn" onClick={handleEdit}>Save</button>
+              <button className="edit-btn table-btn">Delete</button> 
+            </> 
+            :<button className=" edit-btn table-btn" onClick={handleEdit}>Edit</button>}
+            
+          </td>
         </tr>
       )
     })
   }
 
-function renderTableFooter() {
+function renderTableFooter(wallet) {
   return (
     <tr className="table-footer">
-      <td><p>Remaining Funds:<span>{(wallet.amount * 100) - total}</span></p></td>
+      <td><p>Total Costs:<span>{total}</span></p></td>
+      <td></td>
       <td></td>
       <td>
-        <button class=" add-row-btn table-btn"><i class="fas fa-plus"></i></button>
-        <button class=" edit-btn table-btn">Edit</button>
-
+        <p>Remaining Funds: {wallet.amount * 100 - {total}}</p>
         {/* Delete button - solution 1/}
         {/* <button onClick={handleDelete} class = "delete-btn table-btn">Delete</button> */}
 
 
       {/* solution 2 */}
 
-        <button onClick={(e) => handleDelete (e, walletBills.id)} class = "delete-btn table-btn">Delete</button>
 
         </td>
       </tr>
@@ -129,7 +137,7 @@ function renderTableFooter() {
         <tbody>
           {renderTableHeader()}
           {renderTableData()}
-          {renderTableFooter()}
+          {renderTableFooter(wallet)}
         </tbody>
       </table>
     </div>
