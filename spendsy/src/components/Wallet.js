@@ -5,6 +5,7 @@ function Wallet() {
   const [wallet, setWallet] = useState({})
   const [walletBills, setWalletBills] = useState([])
   const [total, setTotal] = useState(0)
+  
   // const [user, setUser] = useState([])
 
   // Fetches
@@ -36,32 +37,37 @@ function Wallet() {
   // }, [])
 
   
+// -------------delete solution one--------------------------------------------
+//   function handleWalletDelete(){
 
-  // Table render functions
+//      if(window.confirm("Are you sure you want to delete this wallet?")){
+//         fetch(`http://localhost:9292/bill/2`,{
+//          method: "DELETE",  
+//   })
+//         .then((r) => r.json())
+//         .then((deletedWallet) => console.log(deletedWallet))
+//   }
+// }
+// -----------------------------------------------------------------------------------------------
 
+const handleDelete = (walletId) => {
+  if(window.confirm("Are you sure you want to delete this wallet?")){
+      const newBills = [...walletBills] //creating new array based on the current bills to not mutate state
+      const index = walletBills.findIndex((walletBill)=> walletBills.id === walletId)
+      newBills.splice(index, 1)
+      newBills.splice(index, 2)
+      newBills.splice(index, 3)
+      newBills.splice(index, 4)
+      newBills.splice(index, 5)
+      newBills.splice(index, 6)
+      newBills.splice(index, 7)
 
-
-  // -------------shows it's deleted after refresh--------------------------------------------
-
-
-  function handleWalletDelete(){
-
-    if(window.confirm("Are you sure you want to delete this wallet?")){
-  fetch(`http://localhost:9292/bill/2`,{
-    method: "DELETE",
-    
-  })
-      .then((r) => r.json())
-      .then((deletedWallet) => console.log(deletedWallet))
-  }
-}
-
-
-
+      setWalletBills(newBills)
+  }}
 // ---------------------------------------------------------------------
 
 
-
+// Table render functions
   function renderTableHeader() {
     return (
       <tr>
@@ -94,8 +100,13 @@ function renderTableFooter() {
         <button class=" add-row-btn table-btn"><i class="fas fa-plus"></i></button>
         <button class=" edit-btn table-btn">Edit</button>
 
-        {/* Delete button*/}
-        <button onClick={handleWalletDelete} class = "delete-btn table-btn">Delete</button>
+        {/* Delete button - solution 1/}
+        {/* <button onClick={handleDelete} class = "delete-btn table-btn">Delete</button> */}
+
+
+      {/* solution 2 */}
+
+        <button onClick={(e) => handleDelete (e, walletBills.id)} class = "delete-btn table-btn">Delete</button>
 
         </td>
       </tr>
