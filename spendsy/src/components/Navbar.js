@@ -11,9 +11,9 @@ function NavBar({handleLogin}) {
         <Link to='/'>
           <button className="navlink">Home</button>
         </Link>
-        <Link to='/wallet/page'>
-          <button className="navlink" onClick={() => setLoggedIn(!loggedIn)}>{loggedIn ? 'Logout' : 'Login'}</button>
-        </Link>
+        
+          <button className="navlink" onClick={() => setLoggedIn(!loggedIn)}>{loggedIn ? <Link to='/'>Logout</Link> : <Link to= "/login">'Login'</Link>}</button>
+        
         <button className="navlink">Sign Up</button>
       </nav>
     </>

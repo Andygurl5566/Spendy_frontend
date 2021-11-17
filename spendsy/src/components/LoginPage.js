@@ -22,7 +22,7 @@ function LoginPage(){
           Let's get started! <br/>Your financial snapshot is just one click away </p>
         <div className='btn-container'>
         <Link to='/wallet/page'>
-          <button className='btn btn-hover' onClick={() => handleLogin()}>View My Wallet</button>
+          <button className='btn btn-hover' onClick={() => handleLogin()}>View My Wallet </button>
         </Link>
         <Link to = "/form">
           <button className='btn btn-hover'>Add Bill</button>
