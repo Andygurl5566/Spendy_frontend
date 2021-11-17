@@ -1,14 +1,15 @@
 import NavBar from "./Navbar";
 import { useState } from "react";
 
-function WalletForm() {
+function WalletForm({wallet}) {
+  console.log(wallet)
   const [billList, setBillList] = useState([]);
   const [formData, setFormData] = useState({
     bill_name: "",
     bill_amount: "",
     category_name: "",
-    wallet_id: "",
   });
+
   const handleData = (dataValue) => {
     const { bill_name, bill_amount, category_name } = dataValue;
     fetch("http://localhost:9292/bill", {
@@ -20,12 +21,14 @@ function WalletForm() {
         bill_name: bill_name,
         bill_amount: bill_amount,
         category_name: category_name,
+        wallet_id: wallet.id
       }),
     })
       .then((resp) => resp.json())
       .then((data) => {
         setBillList(data);
-      });
+      })
+      .then(console.log(billList));
   };
 
   const handleSubmitForm = (e) => {
@@ -37,7 +40,7 @@ function WalletForm() {
     console.log(formData);
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
+console.log(formData)
   return (
     <div>
       <NavBar />

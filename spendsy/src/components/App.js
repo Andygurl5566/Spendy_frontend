@@ -10,25 +10,29 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import WalletForm from "./WalletForm";
 
 function App() {
-  const [wallets, setWallets] = useState({});
 
-  useEffect(() => {
-    fetch("http://localhost:9292/wallet")
-      .then((resp) => resp.json())
-      .then((data) => setWallets(data));
-  }, []);
+  const [wallet, setWallet] = useState({});
+
+  useEffect( () =>{
+    fetch(`http://localhost:9292/wallet/2`)
+    .then(resp => resp.json())
+    .then(data => {
+      setWallet(data)
+    })
+  }
+  , [])
 
   return (
     <BrowserRouter>
       <div className="App">
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="/wallet" element={<Wallet wallets={wallets} />} />
+          <Route path="/wallet" element={<Wallet />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/wallet" element={<Wallet />} />
           <Route path="/wallet/page" element={<WalletPage />} />
           <Route path="/wallet/new" element={<CreateWallet />} />
-          <Route path="/form" element={<WalletForm />} />
+          <Route path="/form" element={<WalletForm wallet={wallet}/>} />
         </Routes>
       </div>
     </BrowserRouter>
