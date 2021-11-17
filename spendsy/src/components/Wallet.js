@@ -9,21 +9,21 @@ function Wallet() {
 
   // Fetches
   useEffect(() => {
-    fetch(`http://localhost:9292/wallet/bills/9`)
+    fetch(`http://localhost:9292/wallet/bills/2`)
     .then(resp => resp.json())
     .then(data => setWalletBills(data))
   }
   , [])
   
   useEffect( () =>{
-    fetch(`http://localhost:9292/wallet/9`)
+    fetch(`http://localhost:9292/wallet/2`)
     .then(resp => resp.json())
     .then(data => setWallet(data))
   }
   , [])
   
   useEffect( () =>{
-    fetch(`http://localhost:9292/wallet/total/9`)
+    fetch(`http://localhost:9292/wallet/total/2`)
     .then(resp => resp.json())
     .then(data => setTotal(data))
   }
@@ -35,7 +35,33 @@ function Wallet() {
   //   .then(data => setUser(data))
   // }, [])
 
+  
+
   // Table render functions
+
+
+
+  // -------------shows it's deleted after refresh--------------------------------------------
+
+
+  function handleWalletDelete(){
+
+    if(window.confirm("Are you sure you want to delete this wallet?")){
+  fetch(`http://localhost:9292/bill/2`,{
+    method: "DELETE",
+    
+  })
+      .then((r) => r.json())
+      .then((deletedWallet) => console.log(deletedWallet))
+  }
+}
+
+
+
+// ---------------------------------------------------------------------
+
+
+
   function renderTableHeader() {
     return (
       <tr>
@@ -68,8 +94,8 @@ function renderTableFooter() {
         <button class=" add-row-btn table-btn"><i class="fas fa-plus"></i></button>
         <button class=" edit-btn table-btn">Edit</button>
 
-        {/* Andrea - working on this */}
-        <button class = "delete-btn table-btn">Delete</button>
+        {/* Delete button*/}
+        <button onClick={handleWalletDelete} class = "delete-btn table-btn">Delete</button>
 
         </td>
       </tr>
