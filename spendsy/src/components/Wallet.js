@@ -10,21 +10,21 @@ function Wallet() {
 
   // Fetches
   useEffect(() => {
-    fetch(`http://localhost:9292/wallet/bills/12`)
+    fetch(`http://localhost:9292/bill`)
     .then(resp => resp.json())
     .then(data => setWalletBills(data))
   }
   , [])
   
   useEffect( () =>{
-    fetch(`http://localhost:9292/wallet/12`)
+    fetch(`http://localhost:9292/wallet/1`)
     .then(resp => resp.json())
     .then(data => setWallet(data))
   }
   , [])
   
   useEffect( () =>{
-    fetch(`http://localhost:9292/wallet/total/12`)
+    fetch(`http://localhost:9292/wallet/total/1`)
     .then(resp => resp.json())
     .then(data => setTotal(data))
   }
@@ -50,20 +50,27 @@ function Wallet() {
 // }
 // -----------------------------------------------------------------------------------------------
 
-const handleDelete = (walletId) => {
-  if(window.confirm("Are you sure you want to delete this wallet?")){
-      const newBills = [...walletBills] //creating new array based on the current bills to not mutate state
-      const index = walletBills.findIndex((walletBill)=> walletBills.id === walletId)
-      newBills.splice(index, 1)
-      newBills.splice(index, 2)
-      newBills.splice(index, 3)
-      newBills.splice(index, 4)
-      newBills.splice(index, 5)
-      newBills.splice(index, 6)
-      newBills.splice(index, 7)
+// const handleDelete = (walletId) => {
+//   if(window.confirm("Are you sure you want to delete this wallet?")){
+//       const newBills = [...walletBills] //creating new array based on the current bills to not mutate state
+//       const index = walletBills.findIndex((walletBill)=> walletBills.id === walletId)
+//       newBills.splice(index, 1)
+      
 
-      setWalletBills(newBills)
-  }}
+//       setWalletBills(newBills)
+//   }}
+
+
+
+  const handleDelete = (walletId) => {
+    if(window.confirm("Are you sure you want to delete this wallet?")){
+        const newBills = [...walletBills] //creating new array based on the current bills to not mutate state
+        const index = walletBills.findIndex((walletBill)=> walletBills.id === walletId)
+        newBills.splice(index, 1)
+        
+  
+        setWalletBills(newBills)
+    }}
 // ---------------------------------------------------------------------
 
 
