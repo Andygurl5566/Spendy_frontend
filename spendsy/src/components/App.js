@@ -27,7 +27,8 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/wallet" element={<Wallet />} />
           <Route path="/wallet/page" element={<WalletPage />} />
-          <Route path="/wallet/new" element={<WalletForm />} />
+          <Route path="/wallet/new" element={<CreateWallet />} />
+          <Route path="/form" element={<WalletForm />} />
         </Routes>
       </div>
     </BrowserRouter>

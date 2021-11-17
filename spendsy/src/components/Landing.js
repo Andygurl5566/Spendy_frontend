@@ -17,14 +17,14 @@ function Landing(){
     <div>
       <Navbar handleLogin={handleLogin} />
       <main className= "main-text">
-        <p>Welcome to <span>Spendsy, </span>
+        <p>Welcome to <span className="spendsy spendsy-animation">Spendsy, </span>
           <br/>
           a financial tracking app to help you keep balance.</p>
         <div className='btn-container'>
         <Link to='/wallet/page'>
-          <button className='btn' onClick={() => handleLogin()}>Login</button>
+          <button className='btn btn-hover' onClick={() => handleLogin()}>Login</button>
         </Link>
-          <button className='btn'>Sign Up</button>
+          <button className='btn btn-hover'>Sign Up</button>
         </div>
       </main>
 

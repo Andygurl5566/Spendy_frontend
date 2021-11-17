@@ -1,6 +1,6 @@
 import NavBar from "./Navbar"
 import WalletForm from "./WalletForm"
-import {Routes, Route} from 'react-router-dom'
+import {Routes, Route, Link} from 'react-router-dom'
 import {useState} from 'react'
 
 function CreateWallet(){
@@ -28,13 +28,18 @@ function CreateWallet(){
           type= "text" 
           value={walletName}
           id="wallet-name"
+          className="input-field"
           onChange={(e) => handleWalletName(e.target.value)} />
         <label for="wallet-funds">Amount: </label>
         <input 
           type= "number" 
           value={walletFunds}
           id="wallet-funds"
+          className="input-field"
           onChange={(e) => handleWalletFunds(e.target.value)} />
+          <Link to="/form">
+          <button class="btn btn-hover">Create Wallet</button>
+          </Link>
       </form>
   
       <Routes>

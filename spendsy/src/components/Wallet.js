@@ -116,7 +116,7 @@ function renderTableFooter() {
   return (
     <div className="wallet-container">
       <Link to="/wallet/new">
-        <button className="new-wallet-btn">Create a New Wallet</button>
+        <button className="new-wallet-btn btn-hover">Create a New Wallet</button>
       </Link>
       <table className="bills">
         <tbody>

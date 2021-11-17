@@ -48,7 +48,7 @@ function WalletForm() {
           type="text"
           name="bill_name"
           placeholder="Bill Name"
-          className="bill-input-field"
+          className="input-field"
           value={formData.bill_name}
           onChange={addToBills}
         ></input>
@@ -59,7 +59,7 @@ function WalletForm() {
           type="number"
           name="bill_amount"
           placeholder="Cost"
-          className="bill-input-field"
+          className="input-field"
           value={formData.bill_amount}
           onChange={addToBills}
         ></input>
@@ -67,7 +67,7 @@ function WalletForm() {
         <label>Category:</label>
         <br />
         <select
-          className="bill-input-field"
+          className="input-field"
           value={formData.category_name}
           onChange={addToBills}
           name="category_name"
@@ -83,7 +83,7 @@ function WalletForm() {
         </select>
         <br />
         <br />
-        <button type="submit" className="btn">
+        <button type="submit" className="btn btn-hover">
           Add Bill
         </button>
       </form>
