@@ -10,21 +10,21 @@ function Wallet() {
 
   // Fetches
   useEffect(() => {
-    fetch(`http://localhost:9292/wallet/bills/2`)
+    fetch(`http://localhost:9292/wallet/bills/12`)
     .then(resp => resp.json())
     .then(data => setWalletBills(data))
   }
   , [])
   
   useEffect( () =>{
-    fetch(`http://localhost:9292/wallet/2`)
+    fetch(`http://localhost:9292/wallet/12`)
     .then(resp => resp.json())
     .then(data => setWallet(data))
   }
   , [])
   
   useEffect( () =>{
-    fetch(`http://localhost:9292/wallet/total/2`)
+    fetch(`http://localhost:9292/wallet/total/12`)
     .then(resp => resp.json())
     .then(data => setTotal(data))
   }
