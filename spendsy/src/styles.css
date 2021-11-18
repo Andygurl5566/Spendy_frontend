@@ -149,6 +149,10 @@ th {
 .bills tr:nth-child(odd) {
   background-color: #dae0d9;
 }
+.bills tr th:last-child{
+  width: 30%;
+}
+
 
 /* .bills tr:last-child{
 background-color: #3abf78;
@@ -173,13 +177,13 @@ tfoot {
   height: 2rem;
   background-color: #535151;
   float: right;
-  margin: 0.25rem 2rem;
+  margin: 0.25rem 0.5rem;
 }
 
 .edit-btn {
-  height: 2rem;
-  width: 3rem;
-  font-size: 0.85rem;
+  height: 3rem;
+  width: 8rem;
+  font-size: 1rem;
   color: white;
   border: none; 
 }
@@ -192,13 +196,6 @@ tfoot {
   border: none; 
 }
 
-.add-row-btn {
-  height: 3rem;
-  width: 3rem;
-  font-size: 1.5rem;
-  color: white;
-  border: none;
-}
 
 button {
   border: none;
@@ -276,6 +273,7 @@ align-items: center;
 
 .btn-hover {
   transition: 0.3s;
+  border-radius: 5px;
 }
 
 .btn-hover:hover {
