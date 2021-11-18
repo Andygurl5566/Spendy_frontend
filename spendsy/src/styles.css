@@ -136,9 +136,13 @@ th {
   background-color: #dae0d9;
 }
 
-.bills tr:last-child{
+/* .bills tr:last-child{
 background-color: #3abf78;
 color: white;
+} */
+tfoot {
+  background-color: #3ABF78;
+  color: white;
 }
 .bills th {
   padding-top: 12px;
@@ -264,3 +268,20 @@ align-items: center;
   background-color: #41d887;
   color: black;
 }
+
+.form-btn-container {
+  display: flex;
+}
+
+.form-btn-container button {
+  margin: 1rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: black;
+}
+

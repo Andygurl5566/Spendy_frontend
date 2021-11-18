@@ -1,7 +1,7 @@
 import NavBar from "./Navbar";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+// import styled from "styled-components";
 
 
 
@@ -82,25 +82,27 @@ console.log(formData)
           onChange={addToBills}
           name="category_name"
         >
-          <option value="select">category: </option>
-          <option value="housing">Housing</option>
-          <option value="personals">Personals</option>
-          <option value="food">Food</option>
-          <option value="transportation">Transportation</option>
-          <option value="utilities">Utilities</option>
-          <option value="savings">Savings</option>
-          <option value="misc">Misc.</option>
+          <option value="Select">category: </option>
+          <option value="Housing">Housing</option>
+          <option value="Personals">Personals</option>
+          <option value="Food">Food</option>
+          <option value="Transportation">Transportation</option>
+          <option value="Utilities">Utilities</option>
+          <option value="Savings">Savings</option>
+          <option value="Misc">Misc.</option>
         </select>
         <br />
         <br />
+        <div className="form-btn-container">
+          <button type="submit" className="btn btn-hover">
+            Add Bill
+          </button> 
+          <Link to="/wallet/page">
         <button type="submit" className="btn btn-hover">
-          Add Bill
-        </button> 
-        <Link to="/wallet/page">
-      <Styledbutton type="submit" className="btn btn-hover2">
-          Return to Wallet
-        </Styledbutton>
-        </Link>
+            Return to Wallet
+          </button>
+          </Link>
+        </div>
       </form>
      
     </div>
@@ -109,9 +111,6 @@ console.log(formData)
 
 export default WalletForm;
 
-const Styledbutton = styled.button `
-margin: 10px;
 
 
 
-`
