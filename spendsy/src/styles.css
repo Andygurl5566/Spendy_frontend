@@ -11,10 +11,17 @@
   height: 5.375rem;
   background-color: #3ABF78 ;
   display: flex;
-  justify-content: right;
+  justify-content: space-between;
   align-items: center;
 }
 
+.navbar span{
+  margin-left: 5%;
+  font-size: 2.8rem;
+}
+.fa-coins{
+  font-size: 2.3rem;
+}
 footer {
   height: 5.375rem;
   background-color: #3ABF78 ;
@@ -101,6 +108,12 @@ main p span {
 
 }
 
+.wallet-info {
+  width: 65%;
+  margin-top: 5%;
+  display: flex;
+  justify-content: space-between;
+}
 .new-wallet-btn {
   height: 5rem;
   width: 22rem;
@@ -110,7 +123,7 @@ main p span {
   font-size: 2rem;}
 
 table {
-  margin: 5% auto;
+  margin: 0% auto;
   height: 20vh;
   width: 70%;
 }

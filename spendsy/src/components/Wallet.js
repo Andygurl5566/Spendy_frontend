@@ -241,6 +241,11 @@ const getBills = () => {
 
         <button className="new-wallet-btn btn-hover">Add New Bill</button>
       </Link>
+
+      <div className="wallet-info">
+        <h1 className="wallet-name">{wallet.wallet_name}</h1>
+        <h1 className="wallet-amount">Funds: {wallet.amount}</h1>
+      </div>
       <table className="bills">
         <thead>
           <tr>
