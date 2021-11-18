@@ -61,16 +61,21 @@ function Wallet() {
 
   
 // -------------delete solution one--------------------------------------------
-//   function handleWalletDelete(){
+  function handleWalletDelete(id){
 
-//      if(window.confirm("Are you sure you want to delete this wallet?")){
-//         fetch(`http://localhost:9292/bill/2`,{
-//          method: "DELETE",  
-//   })
-//         .then((r) => r.json())
-//         .then((deletedWallet) => console.log(deletedWallet))
-//   }
-// }
+     if(window.confirm("Are you sure you want to delete this wallet?")){
+        fetch(`http://localhost:9292/bill/${id}`,{
+         method: "DELETE",  
+  })
+        .then((r) => r.json())
+        .then((deletedWallet) => console.log(deletedWallet))
+        .then(json => {
+          // fetch the updated data
+          getBills()
+          getTotal()
+      })
+  }
+}
 // -----------------------------------------------------------------------------------------------
 
 // const handleDelete = (walletId) => {
@@ -87,7 +92,7 @@ function Wallet() {
 // 1.) sets bills
 
   
-//2.) fetch bills
+// 2.) fetch bills
  
 const getBills = () => {
   fetch(`http://localhost:9292/wallet/bills/1`)
@@ -95,25 +100,25 @@ const getBills = () => {
     .then(bills => setWalletBills(bills))
 }
 
-  const addNewBill= incomingBill => {
-		const newBills = [incomingBill, ...bills]
-		setBills(newBills)
-	}
 
 
-  const handleDelete = id => {
-    if(window.confirm("Are you sure you want to delete this wallet?")){
-        const newBills = [...bills] //creating new array based on the current bills to not mutate state
-        const index = newBills.findIndex((bill)=> bill.id === id)
-        newBills.splice(index, 1)
-        setBills(newBills)
+// const handleDelete = (id) => {
+//   if(window.confirm("Are you sure you want to delete this bill?")){
+//       const newBills = [...bills] //creating new array based on the current bills to not mutate state
+//       const index = newBills.findIndex((bill)=> bill.id === id)
+//       newBills.splice(index, 1)
+//       // setBills(newBills)
 
-        console.log("I ran")
-
-        fetch(`http://localhost:9292/bill/${id}` , {
-          method: "DELETE"
-        })
-    }}
+//       fetch(`http://localhost:9292/bill/${id}` , {
+//         method: "DELETE",
+//         headers: {
+//           'Content-Type' : 'application/json'
+//         },
+//       })
+//       .then(getBills())
+//       .then(getTotal())
+//   }
+// }
 
     const handleBillName = (e) => {
       setBillName(e.target.value)
@@ -159,76 +164,10 @@ const getBills = () => {
         status: false,
         rowKey: null
     })
-    // reset the unit price state value
-    // setBillName(null);
 }
+
+
 // ---------------------------------------------------------------------
- 
-
-// Table render functions
-  // function renderTableHeader() {
-  //   return (
-  //     <tr>
-  //       <th>Bill</th>
-  //       <th>Cost</th>
-  //       <th>Category</th>
-  //       <th>Actions</th>
-  //     </tr>
-  //   );
-  
-  // }
-  
-  // 1 - add form data state variable (view code)
-  // 2. add handlechange function then create onChange event listener on all inputs 
-  // 3. names need to match backend attributes for the state variable
-  // 4. create a handle submit function
-  // 5. create a reset function that will set state variable and leave attributes as an empty string (add at end of handle submit function) 
-
-//   function renderTableData() {
-//     return walletBills.map(bill => {
-//       const { id, bill_name, bill_amount, category_name} = bill
-//       return (
-//         <tr key={id}>
-//           {edit ? <td><input type="text" name="bill_name"/> </td> : <td>{bill_name}</td>} 
-//           {edit ? <td><input type="number" name="bill_cost"/></td> : <td>{bill_amount}</td>}
-//           {edit ? <td><input type="text" name="category_name"/></td> : <td>{category_name}</td>}
-//           <td>
-//             {edit ? 
-//             <>
-//               <button className="edit-btn table-btn" onClick={handleEdit}>Save</button>
-//               <button className="edit-btn table-btn" onClick={handleDelete}>Delete</button> 
-//             </> 
-//             :<button className=" edit-btn table-btn" onClick={handleEdit}>Edit</button>}
-            
-//           </td>
-//         </tr>
-//       )
-//     })
-//   }
-
-// function renderTableFooter(wallet) {
-//   return (
-//     <tr className="table-footer">
-//       <td><p>Total Costs:<span>{total}</span></p></td>
-//       <td></td>
-//       <td></td>
-//       <td>
-//         <p>Remaining Funds: {wallet.amount * 100 - {total}}</p>
-//         {/* Delete button - solution 1/}
-//         {/* <button onClick={handleDelete} class = "delete-btn table-btn">Delete</button> */}
-
-
-//       {/* solution 2 */}
-
-
-//         </td>
-//       </tr>
-//     );
-//   }
-
-// {renderTableHeader()}
-//           {renderTableData()}
-//           {renderTableFooter(wallet)}
 
   return (
 
@@ -268,7 +207,7 @@ const getBills = () => {
               <td>
                 {inEditMode.status && inEditMode.rowKey === bill.id ? (
                     <input value={billAmount}
-                    placeholder = {billAmount}
+                    placeholder = {bill.bill_amount}
                             onChange={(e) => handleBillAmount(e)}
                     />
                 ) : (
@@ -298,7 +237,7 @@ const getBills = () => {
             <>
               <button className="edit-btn table-btn" onClick={() => updateRow({id: bill.id, bill_name: billName, bill_amount: billAmount, category_name: categoryName})}>
                 Save</button>
-              <button className="edit-btn table-btn" onClick={() => handleDelete({id: bill.id, bill_name: billName, bill_amount: billAmount, category_name: categoryName})}>Delete</button> 
+              <button className="edit-btn table-btn" onClick={() => handleWalletDelete(bill.id)}>Delete</button> 
             </> 
             :<button className=" edit-btn table-btn" onClick={() => onEdit({id: bill.id, currentBillName: billName, currentBillAmount: billAmount, currentCategoryName: categoryName})}>
                 Edit

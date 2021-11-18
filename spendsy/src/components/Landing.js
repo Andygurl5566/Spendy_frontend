@@ -24,7 +24,7 @@ function Landing(){
         <Link to='/login'>
           <button className='btn btn-hover' onClick={() => handleLogin()}>Login</button>
         </Link>
-          <button className='btn btn-hover'>Sign Up</button>
+          
         </div>
       </main>
 
