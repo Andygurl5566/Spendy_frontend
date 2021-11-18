@@ -235,9 +235,6 @@ const getBills = () => {
     
     <div className="wallet-container">
       <Link to="/form">
-      {/* <Link to="/wallet/new"> */}
-      {/* <button className="new-wallet-btn btn-hover">Create a New Wallet</button> */}
-      {/* implement form instead of table */}
 
         <button className="new-wallet-btn btn-hover">Add New Bill</button>
       </Link>
@@ -271,6 +268,7 @@ const getBills = () => {
               <td>
                 {inEditMode.status && inEditMode.rowKey === bill.id ? (
                     <input value={billAmount}
+                    placeholder = {billAmount}
                             onChange={(e) => handleBillAmount(e)}
                     />
                 ) : (
@@ -300,7 +298,7 @@ const getBills = () => {
             <>
               <button className="edit-btn table-btn" onClick={() => updateRow({id: bill.id, bill_name: billName, bill_amount: billAmount, category_name: categoryName})}>
                 Save</button>
-              <button className="edit-btn table-btn" onClick={handleDelete}>Delete</button> 
+              <button className="edit-btn table-btn" onClick={() => handleDelete({id: bill.id, bill_name: billName, bill_amount: billAmount, category_name: categoryName})}>Delete</button> 
             </> 
             :<button className=" edit-btn table-btn" onClick={() => onEdit({id: bill.id, currentBillName: billName, currentBillAmount: billAmount, currentCategoryName: categoryName})}>
                 Edit
@@ -314,7 +312,7 @@ const getBills = () => {
         <td>{total}</td>
         <td></td>
         <td>
-          <p>Remaining Funds: {wallet.amount * 100 - total}</p>
+          <p>Remaining Funds: {wallet.amount - total}</p>
          </td>
         </tfoot>
       </table>
