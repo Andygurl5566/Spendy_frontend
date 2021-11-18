@@ -1,5 +1,5 @@
 import NavBar from "./Navbar"
-import WalletForm from "./WalletForm"
+import WalletForm from "./BillForm"
 import {Routes, Route, Link} from 'react-router-dom'
 import {useState} from 'react'
 

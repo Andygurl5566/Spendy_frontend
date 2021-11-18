@@ -1,8 +1,13 @@
 import NavBar from "./Navbar";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+
+
 
 function WalletForm({wallet}) {
   console.log(wallet)
+  
   const [billList, setBillList] = useState([]);
   const [formData, setFormData] = useState({
     bill_name: "",
@@ -32,9 +37,11 @@ function WalletForm({wallet}) {
   };
 
   const handleSubmitForm = (e) => {
+    if(window.confirm("Your new bill has been added to your wallet!")){
     e.preventDefault();
     handleData(formData);
-  };
+  }
+};
 
   const addToBills = (e) => {
     console.log(formData);
@@ -88,10 +95,23 @@ console.log(formData)
         <br />
         <button type="submit" className="btn btn-hover">
           Add Bill
-        </button>
+        </button> 
+        <Link to="/wallet/page">
+      <Styledbutton type="submit" className="btn btn-hover2">
+          Return to Wallet
+        </Styledbutton>
+        </Link>
       </form>
+     
     </div>
   );
 }
 
 export default WalletForm;
+
+const Styledbutton = styled.button `
+margin: 10px;
+
+
+
+`

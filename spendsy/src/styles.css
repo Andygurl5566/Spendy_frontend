@@ -209,7 +209,8 @@ label {
 .bill-entry {
 display: flex;
 flex-direction: column;
-width: 45%;
+/* width: 45%; */
+width: 100;
 margin-top: 5%;
 align-items: center;
 }

@@ -7,7 +7,7 @@ import CreateWallet from "./CreateWallet";
 // Hooks
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import WalletForm from "./WalletForm";
+import WalletForm from "./BillForm";
 
 function App() {
 
