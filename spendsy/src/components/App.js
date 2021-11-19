@@ -5,6 +5,7 @@ import WalletPage from "./WalletPage";
 import Home from "./Home";
 import CreateWallet from "./CreateWallet";
 import SignIn from "./SignIn";
+import BillForm from './BillForm'
 // Hooks
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Link} from "react-router-dom";
@@ -12,16 +13,7 @@ import WalletForm from "./BillForm";
 
 function App() {
 
-  const [wallet, setWallet] = useState({});
-
-  useEffect( () =>{
-    fetch(`http://localhost:9292/wallet/1`)
-    .then(resp => resp.json())
-    .then(data => {
-      setWallet(data)
-    })
-  }
-  , [])
+ 
 
   return (
     <BrowserRouter>
@@ -34,7 +26,7 @@ function App() {
           <Route path="/wallet" element={<Wallet />} />
           <Route path="/wallet/page" element={<WalletPage />} />
           <Route path="/wallet/new" element={<CreateWallet />} />
-          <Route path="/form" element={<WalletForm wallet={wallet}/>} />
+          <Route path="/form" element={<BillForm />} />
         </Routes>
       </div>
     </BrowserRouter>

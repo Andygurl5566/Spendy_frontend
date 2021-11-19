@@ -20,7 +20,7 @@ function Home(){
     <div>
       <Navbar handleLogin={handleLogin} />
       <main className= "main-text">
-        <p>Welcome <span className="spendsy spendsy-animation">Aidan,</span>
+        <p>Welcome, <span className="spendsy spendsy-animation">{localStorage.getItem('username')}!</span>
           <br/>
           Let's get started! <br/>Your financial snapshot is just one click away </p>
         <div className='btn-container'>

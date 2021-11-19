@@ -28,21 +28,24 @@ function Wallet() {
 
   // Fetch on load
   useEffect(() => {
-    fetch(`http://localhost:9292/wallet/bills/1`)
+    fetch(`http://localhost:9292/user/wallets/bills/${localStorage.getItem('username')}`)
     .then(resp => resp.json())
-    .then(bills => setWalletBills(bills))
+    .then(user => {
+      setWalletBills(user.wallets[0].bills)
+      console.log(user.wallets[0].bills)
+    })
   }
   , [])
   
   useEffect( () =>{
-    fetch(`http://localhost:9292/wallet/1`)
+    fetch(`http://localhost:9292/user/wallets/${localStorage.getItem('username')}`)
     .then(resp => resp.json())
-    .then(wallets => setWallet(wallets))
+    .then(user => setWallet(user.wallets[0]))
   }
   , [])
   
   useEffect ( () => {
-    fetch(`http://localhost:9292/wallet/total/1`)
+    fetch(`http://localhost:9292/user/wallets/bills/total/${localStorage.getItem('username')}`)
     .then(resp => resp.json())
     .then(totalValue => setTotal(totalValue))
   }, [])
@@ -70,14 +73,14 @@ function Wallet() {
 
 // Get all the bills in the first wallet
 const getBills = () => {
-  fetch(`http://localhost:9292/wallet/bills/1`)
+  fetch(`http://localhost:9292/user/wallets/bills/${localStorage.getItem('username')}  `)
     .then(resp => resp.json())
-    .then(bills => setWalletBills(bills))
+    .then(user => setWalletBills(user.wallets[0].bills))
 }
 
 // Get Total from all bill amounts
 const getTotal = () =>{
-    fetch(`http://localhost:9292/wallet/total/1`)
+    fetch(`http://localhost:9292/user/wallets/bills/total/${localStorage.getItem('username')}`)
     .then(resp => resp.json())
     .then(totalValue => setTotal(totalValue))
   }

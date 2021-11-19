@@ -1,13 +1,13 @@
 import NavBar from "./Navbar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 // import styled from "styled-components";
 
 
 
-function WalletForm({wallet}) {
-  console.log(wallet)
+function WalletForm() {
   
+  const [wallet, setWallet] = useState({})
   const [billList, setBillList] = useState([]);
   const [formData, setFormData] = useState({
     bill_name: "",
@@ -15,9 +15,28 @@ function WalletForm({wallet}) {
     category_name: "",
   });
 
+   useEffect( () =>{
+    fetch(`http://localhost:9292/user/wallets/${localStorage.getItem('username')}`)
+    .then(resp => resp.json())
+    .then(user => {
+      // setWallet(wallets)
+      setWallet(user.wallets[0])
+    })
+  }
+  , [])
+
+const clearState = () => {
+    setFormData(
+    {bill_name: "",
+    bill_amount: "",
+    category_name: ""
+  })
+}
+
+
   const handleData = (dataValue) => {
     const { bill_name, bill_amount, category_name } = dataValue;
-    fetch("http://localhost:9292/bill", {
+    fetch(`http://localhost:9292/user/wallets/bills/${localStorage.getItem('username')}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -33,7 +52,8 @@ function WalletForm({wallet}) {
       .then((data) => {
         setBillList(data);
       })
-      .then(console.log(billList));
+      
+      clearState()
   };
 
   const handleSubmitForm = (e) => {

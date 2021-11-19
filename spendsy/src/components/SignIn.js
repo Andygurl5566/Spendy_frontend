@@ -23,7 +23,8 @@ const logIn = (e ,username, password) => {
   e.preventDefault()
 
  if(users.find(user => user.name === username && user.password === password)) {
-  navigate('/home')
+   localStorage.setItem('username', username)
+  navigate(`/home`)
  } else {
    alert('Incorrect login information')
  }
@@ -47,9 +48,11 @@ const signUp = (e, username, password) => {
       name: username,
       password: password
     })
-  }).then(resp => resp.json()).then(data => alert('New user created'))
+  })
+  .then(resp => resp.json())
+  .then(alert('New user created'))
 
-  navigate('/user/home/:id')
+  navigate('/home')
 }
 
 const handleLoggingIn = () => {
