@@ -173,6 +173,7 @@ const updateRow = ({id, bill_name, bill_amount, category_name}) => {
                 {inEditMode.status && inEditMode.rowKey === bill.id ? (
                     <input 
                       value={billName}
+                      placeholder={bill.bill_name}
                      onChange={(e) => handleBillName(e)}
                     />
                 ) : bill.bill_name}
