@@ -1,8 +1,8 @@
 import Navbar from './Navbar'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-function LoginPage(){
+function Home(){
 
   const [loggedIn, setLoggedIn] = useState(false)
 
@@ -57,4 +57,4 @@ function LoginPage(){
   )
 }
 
-export default LoginPage;
+export default Home;

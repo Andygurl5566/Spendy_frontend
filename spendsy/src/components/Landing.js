@@ -21,7 +21,7 @@ function Landing(){
           <br/>
           a financial tracking app to help you keep balance.</p>
         <div className='btn-container'>
-        <Link to='/login'>
+        <Link to='/signIn'>
           <button className='btn btn-hover' onClick={() => handleLogin()}>Login</button>
         </Link>
           
