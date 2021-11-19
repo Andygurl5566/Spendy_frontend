@@ -38,7 +38,7 @@ const logIn = (e ,username, password) => {
 
 const signUp = (e, username, password) => {
   e.preventDefault()
-  
+  localStorage.setItem('username', username)
   fetch(`http://localhost:9292/user/login`, {
     method: 'POST',
     headers: {
