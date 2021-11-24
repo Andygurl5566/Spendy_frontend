@@ -64,6 +64,12 @@ main p span {
   color: #3ABF78;
 }
 
+.main-btn-container {
+  display: flex;
+  justify-content: left;
+  width: 650px;
+  margin-left: 5%;
+}
 .btn-container {
   display: flex;
   justify-content: space-around;

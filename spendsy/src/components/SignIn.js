@@ -22,7 +22,7 @@ fetch(`http://localhost:9292/user`)
 const logIn = (e ,username, password) => {
   e.preventDefault()
 
- if(users.find(user => user.name === username && user.password === password)) {
+ if(users.find(user => user.name === username.trim() && user.password === password.trim())) {
    localStorage.setItem('username', username)
   navigate(`/home`)
  } else {
@@ -34,11 +34,25 @@ const logIn = (e ,username, password) => {
   // } else {
 
   }
-
+const createWallet= (username, ) => {
+  const walletAmount = prompt("What is your monthly income? ")
+  fetch(`http://localhost:9292/user/wallets/${localStorage.getItem('username')}`, {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      wallet_name: `${username}'s Wallet`,
+      amount: walletAmount
+    })
+  })
+  .then(resp => resp.json())
+}
 
 const signUp = (e, username, password) => {
   e.preventDefault()
   localStorage.setItem('username', username)
+
   fetch(`http://localhost:9292/user/login`, {
     method: 'POST',
     headers: {
@@ -52,6 +66,7 @@ const signUp = (e, username, password) => {
   .then(resp => resp.json())
   .then(alert('New user created'))
 
+  createWallet(username, password)
   navigate('/home')
 }
 

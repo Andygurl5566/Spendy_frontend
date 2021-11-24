@@ -20,7 +20,7 @@ function Landing(){
         <p>Welcome to <span className="spendsy spendsy-animation">Spendsy, </span>
           <br/>
           a financial tracking app to help you keep balance.</p>
-        <div className='btn-container'>
+        <div className='main-btn-container'>
         <Link to='/signIn'>
           <button className='btn btn-hover' onClick={() => handleLogin()}>Login</button>
         </Link>
